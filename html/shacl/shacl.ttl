@@ -229,10 +229,15 @@ pfpsh:crm_E85_Joining a sh:NodeShape ;
         sh:message "Every Joining event needs at least one rdfs:label." ;
     ] ;
     sh:property [
-        sh:path crm:P143_joined ;
+        sh:path [
+            sh:alternativePath (
+                crm:P143_joined
+                [sh:inversePath crm:P143i_was_joined_by]
+            )
+        ] ;
         sh:class crm:E21_Person ;
         sh:minCount 1 ;
-        sh:message "Every Joining event must have at least one Person who joined." ;
+        sh:message "Every Joining event must have at least one Person who joined (via P143_joined or P143i_was_joined_by)." ;
     ] ;
     sh:property [
         sh:path crm:P4_has_time-span ;
@@ -385,7 +390,7 @@ pfpsh:crm_E86_Leaving a sh:NodeShape ;
         sh:path [
             sh:alternativePath (
                 crm:P145_separated
-                [sh:inversePath crm:P145i_was_separated_by]
+                [sh:inversePath crm:P145i_left_by]
             )
         ] ;
         sh:class crm:E21_Person ;

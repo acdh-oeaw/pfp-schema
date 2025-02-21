@@ -1,0 +1,63 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pfpt: <https://pfp-schema.acdh.oeaw.ac.at/types/person-work-publication/#> .
+
+<https://pfp-schema.acdh.oeaw.ac.at/types/person-work-publication> a owl:Ontology ;
+    dc:title "PFP cidoc:E55_Type definitions for Person Work relations"@en ;
+    rdfs:comment """This file contains the definitions for the types of actor relations between persons and works. See https://docs.swissartresearch.net/et/bibliographic_item/#actor-relations"""@en .
+
+
+# person work
+
+pfpt:Any-creator a owl:Class ;
+    rdfs:subClassOf crm:E55_Type ;
+    rdfs:label "Am Erzeugungsprozess beteilligte Person"@de ;
+    rdfs:label "Person involved in the creation process"@en ;
+    rdfs:comment "Am Erzeugungsprozess beteilligte Person"@de ;
+    rdfs:comment "Am Erzeugungsprozess beteilligte Person"@en .
+
+## child classes
+
+pfpt:Creator a owl:Class ;
+    rdfs:subClassOf pfpt:Any-creator ;
+    rdfs:label "Creator"@en ;
+    rdfs:label "Schöpfer*in"@de ;
+    rdfs:comment "Schöpfer*in des Werks"@de ;
+    rdfs:comment "Creator of the work"@en .
+
+### creator sub classes
+pfpt:AnonymosCreator a owl:Class ;
+    rdfs:subClassOf pfpt:Creator ;
+    rdfs:label "Anonymos Creator"@en ;
+    rdfs:label "Anonymer Schöpfer*in"@de ;
+    rdfs:comment "Anonymer Schöpfer*in des Werks"@de ;
+    rdfs:comment "Anonymos Creator of the work"@en .
+
+pfpt:PseudonymosCreator a owl:Class ;
+    rdfs:subClassOf pfpt:Creator ;
+    rdfs:label "Pseudonymos Creator"@en ;
+    rdfs:label "Pseudonymer Schöpfer*in"@de ;
+    rdfs:comment "Pseudonymer Schöpfer*in des Werks"@de ;
+    rdfs:comment "Pseudonymos Creator of the work"@en .
+
+### other kind of creators
+pfpt:Publisher a owl:Class ;
+    rdfs:subClassOf pfpt:Any-creator ;
+    rdfs:label "Publisher"@en ;
+    rdfs:label "Heruasgeber*in"@de ;
+    rdfs:comment "Herausgeber*in des Werks"@de ;
+    rdfs:comment "Publisher of the work"@en .
+
+pfpt:Translator a owl:Class ;
+    rdfs:subClassOf pfpt:Any-creator ;
+    rdfs:label "Translator"@en ;
+    rdfs:label "Übersetzer*in"@de ;
+    rdfs:comment "Übersetzer*in des Werks"@de ;
+    rdfs:comment "Translator of the work"@en .
+
+
+
+
+
