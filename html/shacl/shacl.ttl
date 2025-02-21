@@ -2,6 +2,7 @@
 @prefix pfpsh: <http://pfp-schema.acdh.oeaw.ac.at/shacl/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 
@@ -419,4 +420,40 @@ pfpsh:crm_E55_Type a sh:NodeShape ;
         sh:nodeKind sh:Literal ;
         sh:minCount 1 ;
         sh:message "Every Type must have at least one label." ;
+    ] .
+
+
+pfpsh:frbroo_F24_Publication_Expression a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass frbroo:F24_Publication_Expression ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 1 ;
+        sh:message "Every Publication Expression needs at least one rdfs:label." ;
+    ] ;
+    sh:property [
+        sh:path crm:P1_is_identified_by ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [
+            sh:class crm:E42_Identifier ;
+        ] ;
+        sh:message "Every Publication Expression needs at least one identifier." ;
+    ] ;
+    sh:property [
+        sh:path crm:P1_is_identified_by ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [
+            sh:class crm:E33_E41_Linguistic_Appellation ;
+        ] ;
+        sh:message "Every Publication Expression needs at least one appellation." ;
+    ] ;
+    sh:property [
+        sh:path crm:P67_refers_to ;
+        sh:or (
+            [ sh:class crm:E21_Person ]
+            [ sh:class crm:E74_Group ]
+            [ sh:class crm:E53_Place ]
+        ) ;
+        sh:message "Referenced entities must be either Person, Group or Place." ;
     ] .
