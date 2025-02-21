@@ -2,9 +2,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix pfpt: <http://pfp-schema.acdh.oeaw.ac.at/types/person-work-publication/#> .
+@prefix pfpt: <https://pfp-schema.acdh.oeaw.ac.at/types/person-work-publication/#> .
 
-<http://pfp-schema.acdh.oeaw.ac.at/types/person-work-publication> a owl:Ontology ;
+<https://pfp-schema.acdh.oeaw.ac.at/types/person-work-publication> a owl:Ontology ;
     dc:title "PFP cidoc:E55_Type definitions for Person Work relations"@en ;
     rdfs:comment """This file contains the definitions for the types of actor relations between persons and works. See https://docs.swissartresearch.net/et/bibliographic_item/#actor-relations"""@en .
 
