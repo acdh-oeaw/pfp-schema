@@ -472,14 +472,14 @@ pfpsh:frbroo_F30_Publication_Event a sh:NodeShape ;
         sh:minCount 1 ;
         sh:message "Every Publication Event needs at least one rdfs:label." ;
     ] ;
-    sh:property [
-        sh:path crm:P1_is_identified_by ;
-        sh:qualifiedMinCount 1 ;
-        sh:qualifiedValueShape [
-            sh:class crm:E42_Identifier ;
-        ] ;
-        sh:message "Every Publication Event needs at least one identifier." ;
-    ] ;
+    # sh:property [
+    #     sh:path crm:P1_is_identified_by ;
+    #     sh:qualifiedMinCount 1 ;
+    #     sh:qualifiedValueShape [
+    #         sh:class crm:E42_Identifier ;
+    #     ] ;
+    #     sh:message "Every Publication Event needs at least one identifier." ;
+    # ] ;
     sh:property [
         sh:path frbroo:R24_created ;
         sh:class frbroo:F24_Publication_Expression ;
