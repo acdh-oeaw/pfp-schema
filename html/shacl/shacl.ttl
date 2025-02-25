@@ -462,3 +462,103 @@ pfpsh:frbroo_F24_Publication_Expression a sh:NodeShape ;
         ) ;
         sh:message "Referenced entities must be either Person, Group or Place." ;
     ] .
+
+pfpsh:frbroo_F30_Publication_Event a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass frbroo:F30_Publication_Event ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 1 ;
+        sh:message "Every Publication Event needs at least one rdfs:label." ;
+    ] ;
+    sh:property [
+        sh:path crm:P1_is_identified_by ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedValueShape [
+            sh:class crm:E42_Identifier ;
+        ] ;
+        sh:message "Every Publication Event needs at least one identifier." ;
+    ] ;
+    sh:property [
+        sh:path frbroo:R24_created ;
+        sh:class frbroo:F24_Publication_Expression ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Every Publication Event must create at least one Publication Expression via R24_created." ;
+    ] ;
+    sh:property [
+        sh:path crm:P4_has_time-span ;
+        sh:class crm:E52_Time-Span ;
+        sh:maxCount 1 ;
+        sh:message "Every Publication Event can have max one time-span." ;
+    ] ;
+    sh:or (
+        [
+            sh:property [
+                sh:path crm:P4_has_time-span ;
+                sh:class crm:E52_Time-Span ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+            ]
+        ]
+        [
+            sh:property [
+                sh:path crm:P7_took_place_at ;
+                sh:class crm:E53_Place ;
+                sh:minCount 1 ;
+            ]
+        ]
+        [
+            sh:property [
+                sh:path crm:P01i_is_domain_of ;
+                sh:class crm:PC14_carried_out_by ;
+                sh:minCount 1 ;
+            ]
+        ]
+    ) ;
+    sh:message "Every Publication Event must have either a time-span, at least one place, or at least one actor (via PC14_carried_out_by)." .
+
+pfpsh:crm_PC14_carried_out_by a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass crm:PC14_carried_out_by ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:nodeKind sh:Literal ;
+        sh:minCount 1 ;
+        sh:message "Every PC14_carried_out_by must have at least one rdfs:label." ;
+    ] ;
+    sh:property [
+        sh:path [
+            sh:alternativePath (
+                [sh:inversePath crm:P01i_is_domain_of]
+                crm:P01_is_domain_of
+            )
+        ] ;
+        sh:class frbroo:F30_Publication_Event ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "PC14_carried_out_by must be connected to exactly one F30_Publication_Event." ;
+    ] ;
+    sh:property [
+        sh:path [
+            sh:alternativePath (
+                [sh:inversePath crm:P02i_has_range]
+                crm:P02_has_range
+            )
+        ] ;
+        sh:or (
+            [ sh:class crm:E39_Actor ]
+            [ sh:class crm:E21_Person ]
+            [ sh:class crm:E74_Group ]
+        ) ;
+        sh:minCount 1 ;
+        sh:message "PC14_carried_out_by must specify at least one actor (E39_Actor)." ;
+    ] ;
+    sh:property [
+        sh:path crm:P14.1_in_the_role_of ;
+        sh:class crm:E55_Type ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "PC14_carried_out_by must specify exactly one role type via P14.1_in_the_role_of." ;
+    ] .
