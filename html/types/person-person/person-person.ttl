@@ -21,6 +21,12 @@ pfpt:Friendship a owl:Class ;
     rdfs:label "friendship"@en ;
     rdfs:comment "A friendly relationship between two persons."@en .
 
+pfpt:Is-partner-of a owl:Class ;
+    rdfs:subClassOf pfpt:In-relation-to ;
+    rdfs:label "ist Partner/Partnerin von"@de ;
+    rdfs:label "is partner of"@en ;
+    rdfs:comment "A relationship where one person is the partner of another."@en .
+
 pfpt:Intimate-relation a owl:Class ;
     rdfs:subClassOf pfpt:In-relation-to ;
     rdfs:label "in intimer Beziehung zu"@de ;
