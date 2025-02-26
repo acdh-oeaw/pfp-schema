@@ -3,7 +3,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
-@prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 
