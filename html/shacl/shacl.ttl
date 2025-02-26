@@ -563,38 +563,3 @@ pfpsh:crm_PC14_carried_out_by a sh:NodeShape ;
         sh:maxCount 1 ;
         sh:message "PC14_carried_out_by must specify exactly one role type via P14.1_in_the_role_of." ;
     ] .
-
-pfpsh:frbroo_F24_Publication_Expression a sh:NodeShape ;
-    sh:nodeKind sh:IRI ;
-    sh:targetClass frbroo:F24_Publication_Expression ;
-    sh:property [
-        sh:path rdfs:label ;
-        sh:nodeKind sh:Literal ;
-        sh:minCount 1 ;
-        sh:message "Every Publication Expression needs at least one rdfs:label." ;
-    ] ;
-    sh:property [
-        sh:path crm:P1_is_identified_by ;
-        sh:qualifiedMinCount 1 ;
-        sh:qualifiedValueShape [
-            sh:class crm:E42_Identifier ;
-        ] ;
-        sh:message "Every Publication Expression needs at least one identifier." ;
-    ] ;
-    sh:property [
-        sh:path crm:P1_is_identified_by ;
-        sh:qualifiedMinCount 1 ;
-        sh:qualifiedValueShape [
-            sh:class crm:E33_E41_Linguistic_Appellation ;
-        ] ;
-        sh:message "Every Publication Expression needs at least one appellation." ;
-    ] ;
-    sh:property [
-        sh:path crm:P67_refers_to ;
-        sh:or (
-            [ sh:class crm:E21_Person ]
-            [ sh:class crm:E74_Group ]
-            [ sh:class crm:E53_Place ]
-        ) ;
-        sh:message "Referenced entities must be either Person, Group or Place." ;
-    ] .
