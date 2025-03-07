@@ -310,8 +310,7 @@ pfpsh:crm_E52_Time-Span a sh:NodeShape ;
             sh:path rdfs:label ;
             sh:nodeKind sh:Literal ;
             sh:minCount 1 ;
-            sh:maxCount 1 ;
-            sh:message "When using a literal time description, exactly one rdfs:label is required." ;
+            sh:message "Every Time-Span needs at least one rdfs:label." ;
         ] ;
     sh:xone (
         [
@@ -374,6 +373,38 @@ pfpsh:crm_E52_Time-Span a sh:NodeShape ;
                     ]
                 ]
             )
+        ]
+        [
+            # Third option: string-based time description with no structured date properties
+            sh:and (
+                [
+                    sh:property [
+                        sh:path rdfs:label ;
+                        sh:nodeKind sh:Literal ;
+                        sh:minCount 1 ;
+                        sh:message "When using a string-based time description, at least one descriptive rdfs:label is required." ;
+                    ]
+                ]
+                [
+                    sh:not [
+                        sh:path crm:P82_at_some_time_within ;
+                        sh:minCount 1 ;
+                    ]
+                ]
+                [
+                    sh:not [
+                        sh:path crm:P82a_begin_of_the_begin ;
+                        sh:minCount 1 ;
+                    ]
+                ]
+                [
+                    sh:not [
+                        sh:path crm:P82b_end_of_the_end ;
+                        sh:minCount 1 ;
+                    ]
+                ]
+            ) ;
+            sh:message "For imprecise time descriptions (e.g., 'sometime within 10th century'), provide a descriptive rdfs:label without structured date properties." ;
         ]
     ) .
 
