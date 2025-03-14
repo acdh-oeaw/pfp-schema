@@ -1,3 +1,10 @@
+#!/usr/bin/env -S uv run
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+# "rdflib",
+# ]
+# ///
 import glob
 from rdflib import Graph
 
