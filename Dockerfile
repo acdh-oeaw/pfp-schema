@@ -1,18 +1,14 @@
 # Stage 1: Build the HTML files
-FROM python:3.12-slim AS builder
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 
 # Set the working directory
 WORKDIR /app
-
-# Copy the requirements file and install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
 
 # Copy the rest of the application files
 COPY . .
 
 # Run the build script
-RUN python scripts/build.py
+RUN ./scripts/build.py
 
 # Stage 2: Serve the HTML files with Nginx
 FROM nginx

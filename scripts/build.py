@@ -1,3 +1,13 @@
+#!/usr/bin/env -S uv run
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+# "rdflib",
+# "Jinja2>=3.1.1,<4",
+# "requests>=2.27.1,<3",
+# "pylode",
+# ]
+# ///
 import os
 import glob
 import json
